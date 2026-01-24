@@ -3,7 +3,7 @@
 ## Introduction
 Setting up a Minecraft server on your Android device using Termux is a great way to host a multiplayer world without needing a dedicated computer or rooting your phone. Termux is a powerful terminal emulator that runs a Linux environment on Android, and it doesn't require root access. This guide focuses on setting up a Java Edition server, which supports cross-play on Bedrock Edition.
 
-## Prerequisites
+## Requirements
 - **Android Device:** Any Android phone or tablet running Android 7.0 or higher.
 - **Termux App:** Download and install Termux from F-Droid or the official website (Google Play Store version may have limitations).
 - **Storage Space:** At least 1-2 GB free space for the server files.
@@ -24,11 +24,15 @@ Setting up a Minecraft server on your Android device using Termux is a great way
    ```
 
 ### Step 2: Install Java
-Bedrock Dedicated Server requires Java. Install OpenJDK:
+We need to download java language 1st here are some java version to download 
 ```
 pkg install openjdk-17
+pkg install openjdk-21
+pkg install openjdk-25
 ```
-Verify the installation:
+`Note: if you have old phone with poor cpu then openjdk-17 is best but if you you want to play in latest version of Minecraft then you have to download openjdk-21`
+
+Verify the installation of java:
 ```
 java -version
 ```
