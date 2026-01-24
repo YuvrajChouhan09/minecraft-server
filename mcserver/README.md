@@ -1,17 +1,14 @@
-# How to Set Up a Minecraft Server in Termux with Cross-Play Support (No Rooting Required)
+# How to make a Minecraft Server in Termux with Cross-Play Support (No Rooting Required)
 
 ## Introduction
-Setting up a Minecraft server on your Android device using Termux is a great way to host a multiplayer world without needing a dedicated computer or rooting your phone. Termux is a powerful terminal emulator that runs a Linux environment on Android, and it doesn't require root access. This guide focuses on setting up a Bedrock Edition server, which supports cross-play across platforms like PC, Xbox, PlayStation, Nintendo Switch, and mobile devices.
-
-**Note:** Cross-play is available with Minecraft Bedrock Edition. Java Edition does not support cross-play natively, so we'll use Bedrock Dedicated Server (BDS) for this setup.
+Setting up a Minecraft server on your Android device using Termux is a great way to host a multiplayer world without needing a dedicated computer or rooting your phone. Termux is a powerful terminal emulator that runs a Linux environment on Android, and it doesn't require root access. This guide focuses on setting up a Java Edition server, which supports cross-play on Bedrock Edition.
 
 ## Prerequisites
 - **Android Device:** Any Android phone or tablet running Android 7.0 or higher.
 - **Termux App:** Download and install Termux from F-Droid or the official website (Google Play Store version may have limitations).
 - **Storage Space:** At least 1-2 GB free space for the server files.
 - **Internet Connection:** Stable Wi-Fi or mobile data for downloading and hosting.
-- **Minecraft Account:** Optional, but useful for testing. Players joining need their own Minecraft accounts.
-- **No Rooting Needed:** Termux works without root access.
+
 
 ## Step-by-Step Guide
 
@@ -21,12 +18,12 @@ Setting up a Minecraft server on your Android device using Termux is a great way
    ```
    pkg update && pkg upgrade
    ```
-3. Install essential packages:
+3. Install essential package:
    ```
-   pkg install curl wget unzip
+   pkg install  wget 
    ```
 
-### Step 2: Install Java (Required for BDS)
+### Step 2: Install Java
 Bedrock Dedicated Server requires Java. Install OpenJDK:
 ```
 pkg install openjdk-17
@@ -36,10 +33,10 @@ Verify the installation:
 java -version
 ```
 
-### Step 3: Download and Set Up Bedrock Dedicated Server (BDS)
+### Step 3: Download and Set Up Server 
 1. Create a directory for the server:
    ```
-   mkdir minecraft-server && cd minecraft-server
+   mkdir mcserver && cd mcserver
    ```
 2. Download the latest BDS from Mojang's official site. Check the current version on the [Minecraft website](https://www.minecraft.net/en-us/download/server/bedrock).
    ```
