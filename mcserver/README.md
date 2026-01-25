@@ -59,59 +59,10 @@ java -version
  3. Download and Install the Server (PaperMC)
  ### What is PaperMC?
 - PaperMC is a high-performance Minecraft Java Edition server software. It is more optimized and uses less RAM than the official Mojang server, making it suitable - for running on Android devices using Termux.
-# =====================================================
-# PaperMC Server Setup (Choose based on Java version)
-# =====================================================
 
-# ----------------
-# For openjdk-17 users (Minecraft 1.20.1)
-# ----------------
-wget https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar
-# ----------------
-# For openjdk-21 users (Minecraft 1.21.11)
-# ----------------
-# Uncomment ONLY if using Java 21
+### For openjdk-17 users (Minecraft 1.20.1 - 1.20.4)
+```sh wget https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar```
 
-# wget https://api.papermc.io/v2/projects/paper/versions/1.21.11/builds/1/downloads/paper-1.21.11-1.jar
-
-### Step 5: Run the Server
-1. Start the server:
-   ```
-   ./start.sh
-   ```
-   Or directly:
-   ```
-   java -Xmx1024M -Xms1024M -jar server.jar nogui
-   ```
-   (Adjust memory as needed; 1024M is 1GB.)
-
-2. The server will generate world files and start. You'll see output like "Server started" with the IP address.
-
-3. To stop the server, type `stop` in the console.
-
-### Step 6: Port Forwarding and Access
-- **Local Access:** Players on the same Wi-Fi can join using your device's IP (check with `ifconfig` or `ip addr show`).
-- **External Access:** For players outside your network, set up port forwarding on your router (port 19132 UDP for Bedrock). Use tools like ngrok for temporary tunneling if needed:
-  ```
-  pkg install ngrok
-  ngrok tcp 19132
-  ```
-  Share the ngrok URL with friends.
-
-- **Firewall:** Termux doesn't have a built-in firewall, but ensure your Android's firewall allows connections.
-
-## Notes on Cross-Play
-- **Bedrock Edition Only:** Cross-play works seamlessly with BDS. Players on Windows 10/11, Xbox, PlayStation, Switch, iOS, and Android can join the same server.
-- **No Rooting:** This entire setup runs without root access, making it safe and easy.
-- **Performance:** Android devices may not handle large servers well due to hardware limits. Start small (2-5 players) and monitor CPU/ram usage.
-- **Updates:** Regularly check for BDS updates and backup your world files.
-- **Troubleshooting:** If the server doesn't start, check Java installation and permissions. Use `chmod +x` on scripts if needed.
-
-## Additional Tips
-- **Backup:** Copy the `worlds` folder regularly.
-- **Mods/Addons:** Bedrock supports addons; download from trusted sources.
-- **Security:** Use strong passwords and monitor player activity.
-- **Alternatives:** If BDS is complex, consider third-party tools like MCPE Master or apps, but Termux provides full control.
-
-Enjoy hosting your Minecraft server on the go! If you encounter issues, check Termux forums or Minecraft communities for help.
+### For openjdk-21 users (Minecraft 1.21.11)
+```sh wget https://api.papermc.io/v2/projects/paper/versions/1.21.11/builds/1/downloads/paper-1.21.11-1.jar```
 
