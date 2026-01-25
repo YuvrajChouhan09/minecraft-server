@@ -78,4 +78,20 @@ After downloading the PaperMC server file, you should rename it to `server.jar`.
 This avoids confusion and makes it easier to run the server later.
 
 #### Step 1: List the files in the directory
-Use the `ls` command to see the downloaded file name:
+Use the `ls` command to see the downloaded file name. You will see a file name similar to one of these:
+- `paper-1.20.1-196.jar`
+- `paper-1.21.11-1.jar`
+
+#### Step 2: Rename the file using `mv`
+Copy the exact file name shown by `ls`, then use the `mv` command to rename it.
+
+**Example for Minecraft 1.20.1 (openjdk-17):**
+```
+mv paper-1.20.1-196.jar server.jar
+```
+**Example for Minecraft 1.21.11 (openjdk-21):**
+```
+mv paper-1.21.11-1.jar server.jar
+```
+#### Step 3: Confirm the rename
+Run `ls` again You should now see: ```server.jar``` 
