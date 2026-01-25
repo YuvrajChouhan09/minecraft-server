@@ -57,8 +57,8 @@ The Minecraft server version you can run **depends entirely on the Java version 
 > ⚠️ Using the wrong Java version will cause the server to crash or fail to start.
 
  3. Download and Install the Server (PaperMC)
- ## What is PaperMC?
-PaperMC is a high-performance Minecraft Java Edition server software. It is more optimized and uses less RAM than the official Mojang server, making it suitable for running on Android devices using Termux.
+ ### What is PaperMC?
+- PaperMC is a high-performance Minecraft Java Edition server software. It is more optimized and uses less RAM than the official Mojang server, making it suitable - for running on Android devices using Termux.
 
 
 ### Step 5: Run the Server
