@@ -60,7 +60,7 @@ java -version
  ### What is PaperMC?
 - PaperMC is a high-performance Minecraft Java Edition server software. It is more optimized and uses less RAM than the official Mojang server, making it suitable - for running on Android devices using Termux.
 
-### For openjdk-17 users (Minecraft 1.20.1 - 1.20.4)
+### For openjdk-17 users (Minecraft 1.20.4)
 ``` 
 wget https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar
 ```
@@ -69,4 +69,6 @@ wget https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloa
 ```
 wget https://api.papermc.io/v2/projects/paper/versions/1.21.11/builds/1/downloads/paper-1.21.11-1.jar
 ```
-
+### Note
+- If you want to download **other Minecraft versions**, you can visit the **PaperMC version list** on the official PaperMC website and copy the download link for your desired version.
+- If you want to use **other server software** (such as **Vanilla**, **Spigot**, **Fabric**, or **Forge**), you can download their server `.jar` file from their official websites and install it in the same way using `wget` with the provided download link.
