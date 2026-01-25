@@ -1,4 +1,4 @@
-# How to make a Minecraft Server in Termux with Cross-Play Support (No Rooting Required)
+# How to make a Minecraft Server in Termux with Cross-Play Support (Without Root)
 
 ## Introduction
 Setting up a Minecraft server on your Android device using Termux is a great way to host a multiplayer world without needing a dedicated computer or rooting your phone. Termux is a powerful terminal emulator that runs a Linux environment on Android, and it doesn't require root access. This guide focuses on setting up a Java Edition server, which supports cross-play on Bedrock Edition.
@@ -27,10 +27,9 @@ Setting up a Minecraft server on your Android device using Termux is a great way
 We need to download java language 1st here are some java version to download 
 ```
 pkg install openjdk-17
-pkg install openjdk-21
-pkg install openjdk-25
+pkg install openjdk-21 
 ```
-`Note: if you have old phone with poor cpu then openjdk-17 is best but if you you want to play in latest version of Minecraft then you have to download openjdk-21`
+`Note: if you are you using an  older Android versions then  use openjdk-17 because older versions does not support openjdk-21`
 
 Verify the installation of java:
 ```
@@ -42,12 +41,7 @@ java -version
    ```
    mkdir mcserver && cd mcserver
    ```
-2. Download the latest BDS from Mojang's official site. Check the current version on the [Minecraft website](https://www.minecraft.net/en-us/download/server/bedrock).
-   ```
-   wget https://piston-data.mojang.com/v1/objects/8f3112a1049751cc472ec13e397eade5336ca7ae/server.jar
-   ```
-   (Replace the URL with the latest download link if needed.)
-
+2. 
 3. Extract or prepare the server files. BDS comes as a JAR file, but you may need to download additional scripts or use a wrapper for easier management.
 
    For simplicity, you can use a script to automate setup. Download a BDS setup script:
