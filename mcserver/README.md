@@ -37,7 +37,7 @@ Verify the installation of java:
 java -version
 ```
 
-### Step 3: Download and Set Up Server 
+### Step 3: Download Server
 1. Create a directory for the server:
    ```
    mkdir mcserver && cd mcserver
@@ -95,3 +95,28 @@ mv paper-1.21.11-1.jar server.jar
 ```
 #### Step 3: Confirm the rename
 Run `ls` again You should now see: ```server.jar``` 
+
+### Step 4: Run the Server for the First Time
+
+After renaming the file to `server.jar`, you need to run the server once.  
+This first run is required to generate important files such as `eula.txt` and the server configuration files.
+
+#### Step 1: Start the server
+Make sure you are inside the server folder, then run:
+
+```
+java -jar server.jar
+```
+`Note:This command will start the server. It take some time and also show some warning but dont worry about that.` 
+#### Step 2: Wait for the server to stop
+During the first run, the server will start briefly and then stop automatically.  
+This is normal and happens because you have not accepted the Minecraft EULA yet.
+#### Step 3: Check generated files
+List the files using ```ls```to confirm they were created. You should now see files like:
+- `eula.txt`
+- `server.properties`
+- `logs` folder
+- `Plugins` folder
+- etc.
+
+The server is now ready for the next step, where you will accept the EULA and configure the server.
