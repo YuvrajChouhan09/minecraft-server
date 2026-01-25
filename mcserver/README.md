@@ -120,3 +120,34 @@ List the files using ```ls```to confirm they were created. You should now see fi
 - etc.
 
 The server is now ready for the next step, where you will accept the EULA and configure the server.
+### Step 5: Accept the EULA and Start the Server
+#### Step 1: Open the EULA file
+Use `nano` to edit the EULA file ```nano eula.txt``` 
+#### Step 2: Accept the EULA
+Inside the file, find this line ```eula=false``` Change it to: ```eula=true```Save and exit Nano:
+- Press **Ctrl + X**
+- Press **Y**
+- Press **Enter**
+
+#### Step 3: Start the server normally
+Now start the server with recommended RAM settings for Android devices:
+```
+java -Xms512M -Xmx1024M -jar server.jar nogui
+```
+## It will take  5-10 minutes then you ready to join
+### Step 6: Join the Server (IP and Port)
+
+Once the server is running, players can join using the server’s **IP address** and **port**.
+
+
+#### Step 1: Find your device’s IP address
+In Termux,You need to stop the server ```Ctrl + z``` to stop then run the following command ```ip addr show```. Look for an address that starts with ```inet``` for example ```inet 192.168.1.5``` This is your **local IP address**.
+
+#### Step 2: Understand the default ports
+- **Java Edition port:** `25565`
+
+#### Step 3: Join from Java Edition
+On Minecraft Java Edition:
+1. Open **Multiplayer**
+2. Click **Add Server**
+3. Enter: Server Address::Port Example ```192.168.1.5:25565```
