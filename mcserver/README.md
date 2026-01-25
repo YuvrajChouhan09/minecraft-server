@@ -44,8 +44,8 @@ java -version
    ```
 2. Choose Minecraft Version Based on Java Version (IMPORTANT)
 
-The Minecraft server version you can run **depends entirely on the Java version installed**.
-
+   `Note: The Minecraft server version you can run **depends entirely on the Java version installed**.`
+--
 ### Java Version Compatibility
 - **openjdk-17**
   - Supports Minecraft **1.17 – 1.20.4**
@@ -53,7 +53,7 @@ The Minecraft server version you can run **depends entirely on the Java version 
 - **openjdk-21**
   - Required for Minecraft **1.20.5+**
   - Needed to run **latest versions like 1.21.11**
-
+--
 > ⚠️ Using the wrong Java version will cause the server to crash or fail to start.
 
  3. Download and Install the Server (PaperMC)
