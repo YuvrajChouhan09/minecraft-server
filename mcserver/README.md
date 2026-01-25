@@ -37,40 +37,25 @@ java -version
 ```
 
 ### Step 3: Download and Set Up Server 
-1. Create a directory for the server:
+##1. Create a directory for the server:
    ```
    mkdir mcserver && cd mcserver
    ```
-2. 
-3. Extract or prepare the server files. BDS comes as a JAR file, but you may need to download additional scripts or use a wrapper for easier management.
+##2. Choose Minecraft Version Based on Java Version (IMPORTANT)
 
-   For simplicity, you can use a script to automate setup. Download a BDS setup script:
-   ```
-   wget https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/SetupMinecraft.sh
-   chmod +x SetupMinecraft.sh
-   ./SetupMinecraft.sh
-   ```
-   This script will download and configure BDS automatically.
+The Minecraft server version you can run **depends entirely on the Java version installed**.
 
-### Step 4: Configure the Server
-1. After setup, navigate to the server directory (usually `~/minecraft-server`).
-2. Edit the server properties file:
-   ```
-   nano server.properties
-   ```
-   Key settings to modify:
-   - `server-name`: Set your server's name.
-   - `gamemode`: Choose survival, creative, etc.
-   - `difficulty`: Set to easy, normal, hard.
-   - `max-players`: Limit the number of players (e.g., 10).
-   - `online-mode`: Set to true for security (requires Xbox Live accounts for cross-play).
-   - `allow-cheats`: false (unless you want cheats).
-   - `level-name`: Name your world.
+### Java Version Compatibility
+- **openjdk-17**
+  - Supports Minecraft **1.17 – 1.20.4**
+  - Best choice for **older or low-end phones**
+- **openjdk-21**
+  - Required for Minecraft **1.20.5+**
+  - Needed to run **latest versions like 1.21.11**
 
-   Save and exit (Ctrl+X, Y, Enter in nano).
+> ⚠️ Using the wrong Java version will cause the server to crash or fail to start.
 
-3. For cross-play, ensure `online-mode` is true. This allows players from different platforms to join using their Minecraft accounts.
-
+---
 ### Step 5: Run the Server
 1. Start the server:
    ```
