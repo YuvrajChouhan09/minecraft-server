@@ -45,7 +45,7 @@ java -version
 2. Choose Minecraft Version Based on Java Version (IMPORTANT)
 
    `Note: The Minecraft server version you can run **depends entirely on the Java version installed**.`
---
+---
 ### Java Version Compatibility
 - **openjdk-17**
   - Supports Minecraft **1.17 – 1.20.4**
@@ -53,9 +53,9 @@ java -version
 - **openjdk-21**
   - Required for Minecraft **1.20.5+**
   - Needed to run **latest versions like 1.21.11**
---
-> ⚠️ Using the wrong Java version will cause the server to crash or fail to start.
 
+> ⚠️ Using the wrong Java version will cause the server to crash or fail to start.
+---
  3. Download and Install the Server (PaperMC)
  ### What is PaperMC?
 - PaperMC is a high-performance Minecraft Java Edition server software. It is more optimized and uses less RAM than the official Mojang server, making it suitable - for running on Android devices using Termux.
