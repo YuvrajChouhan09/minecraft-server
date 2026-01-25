@@ -24,10 +24,11 @@ Setting up a Minecraft server on your Android device using Termux is a great way
    ```
 
 ### Step 2: Install Java
-We need to download java language 1st here are some java version to download 
-```
+We need to install Java first. Below are the supported Java versions for running a Minecraft server in Termux:
+
+```sh
 pkg install openjdk-17
-pkg install openjdk-21 
+pkg install openjdk-21
 ```
 `Note: if you are you using an  older Android versions then  use openjdk-17 because older versions does not support openjdk-21`
 
@@ -37,11 +38,11 @@ java -version
 ```
 
 ### Step 3: Download and Set Up Server 
-##1. Create a directory for the server:
+1. Create a directory for the server:
    ```
    mkdir mcserver && cd mcserver
    ```
-##2. Choose Minecraft Version Based on Java Version (IMPORTANT)
+2. Choose Minecraft Version Based on Java Version (IMPORTANT)
 
 The Minecraft server version you can run **depends entirely on the Java version installed**.
 
