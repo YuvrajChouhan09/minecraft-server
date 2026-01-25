@@ -72,3 +72,10 @@ wget https://api.papermc.io/v2/projects/paper/versions/1.21.11/builds/1/download
 ### Note
 - If you want to download **other Minecraft versions**, you can visit the **PaperMC version list** on the official PaperMC website and copy the download link for your desired version.
 - If you want to use **other server software** (such as **Vanilla**, **Spigot**, **Fabric**, or **Forge**), you can download their server `.jar` file from their official websites and install it in the same way using `wget` with the provided download link.
+### Rename the Server File (Step by Step)
+
+After downloading the PaperMC server file, you should rename it to `server.jar`.  
+This avoids confusion and makes it easier to run the server later.
+
+#### Step 1: List the files in the directory
+Use the `ls` command to see the downloaded file name:
