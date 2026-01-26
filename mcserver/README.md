@@ -151,3 +151,70 @@ On Minecraft Java Edition:
 1. Open **Multiplayer**
 2. Click **Add Server**
 3. Enter: Server Address::Port Example ```192.168.1.5:25565```
+
+### Step 7: Enable Cross-Play (Java + Bedrock)
+
+At this point, **Java Edition players can already join** the server using the IP and port from Step 6.
+
+To allow **Bedrock Edition (Mobile / Console) players** to join the same server, you must install **plugins**.
+
+
+## What is GeyserMC and Floodgate?
+- **GeyserMC** allows Bedrock Edition players to join a Java Edition server.
+- **Floodgate** allows Bedrock players to join **without needing a Java account**.
+- Both plugins are required for proper cross-play.
+
+
+### Step 1: Stop the Server
+Before installing plugins, stop the server safely.
+
+In the server console, type `stop`. Wait until the server fully shuts down.
+
+### Step 2: Open the plugins folder
+Make sure you are inside your server directory, then run `cd plugins`
+
+### Step 3: Download GeyserMC Plugin (Spigot Version)
+Download the **Geyser Spigot plugin**:
+```
+wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
+```
+
+### Step 4: Download Floodgate Plugin (Paper Version)
+Download the **Floodgate plugin for Paper**:
+```
+wget https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
+```
+
+### Step 5: Verify Plugin Installation
+List the files `ls` then You should see "Geyser-Spigot.jar & floodgate-paper.jar" These files **must stay inside the `plugins` folder**.
+
+
+### Step 6: Start the Server with Limited RAM
+Go back to the main server folder `cd ..` Start the server with recommended RAM limits for Android:
+```
+java -Xms512M -Xmx1024M -jar server.jar nogui
+```
+> ⏳ The first start after installing plugins may take **some extra time**.  
+> Be patient and wait until the server finishes loading.
+
+
+### Step 7: Wait for Plugins to Load
+When the server starts successfully, you should see messages mentioning:
+- `Geyser`
+- `Floodgate`
+
+This confirms that cross-play is enabled.
+
+### Step 8: Join the Server 
+
+#### Java Edition
+`IP:  Port: 25565`
+#### Bedrock Edition:  
+`Port: 19132`
+Bedrock players can now join the same server as Java players.
+
+### Notes
+- Bedrock players may take slightly longer to join the first time
+- Do not close Termux while the server is running
+- Always stop the server using `stop` before closing Termux
+---
