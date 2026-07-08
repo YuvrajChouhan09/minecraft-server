@@ -1,281 +1,220 @@
-# Termux - Android Terminal Emulator
-**Termux** is a powerful terminal emulator for Android that brings the full capabilities of a Linux environment to your smartphone or tablet. No root access required!
+# How to make a Minecraft Server in Termux with Cross-Play Support (Without Root)
 
-## Table of Contents
+## Introduction
+Setting up a Minecraft server on your Android device using Termux is a great way to host a multiplayer world without needing a dedicated computer or rooting your phone. Termux is a powerful terminal emulator that runs a Linux environment on Android, and it doesn't require root access. This guide focuses on setting up a Java Edition server, which supports cross-play on Bedrock Edition.
 
-- [What is Termux?](#-what-is-termux)
-- [Features](#features)
-- [Installation](#installation)
-- [Getting Started](#getting-started)
-- [Essential Commands](#essential-commands)
-- [Package Management](#package-management)
-- [Tutorial Videos](#tutorial-videos)
-- [Documentation & Resources](#documentation--resources)
-- [Community](#community)
-- [FAQ](#faq)
-
-## What is Termux?
-
-Termux is a powerful terminal emulator and Linux environment for Android. It allows you to run a wide range of Linux packages, programming languages, and network tools, allowing you to:
-
-- Run Linux commands on Android
-- Install programming languages (Python, Node.js, Ruby, C/C++, etc.)
-- Access device hardware and sensors
-- Create automation scripts
-- Run servers and development environments
+## Requirements
+- **Android Device:** Any Android phone or tablet running Android 7.0 or higher.
+- **Termux App:** Download and install Termux from F-Droid or the official website (Google Play Store version may have limitations).
+- **Storage Space:** At least 1-2 GB free space for the server files.
+- **Internet Connection:** Stable Wi-Fi or mobile data for downloading and hosting.
 
 
-## Features
-### Core Capabilities
-- **Full Linux Environment** - Complete terminal emulation with bash and zsh shells
-- **Package Management** - Over 1000+ packages available via APT package manager
-- **No Root Required** - Works on unrooted Android devices
-- **Hardware Access** - Control camera, flashlight, sensors, and more via Termux:API
-- **Multiple Sessions** - Run multiple terminal sessions simultaneously
-- **Custom Styling** - Customize colors and fonts with Termux:Styling
+## Step-by-Step Guide
 
-### Development Environment
-- **Programming Languages**: Python, Node.js, Ruby, C/C++, Go, Rust, Java
-- **Text Editors**: Vim, Nano, Emacs
-- **Version Control**: Git support
-- **Web Development**: Local server hosting, PHP, HTML/CSS/JS
-- **Database**: MySQL, SQLite support
-
-### System Administration
-- **SSH Client**: Connect to remote servers
-- **File Management**: Complete file system access
-- **Process Management**: Background tasks and job control
-- **Network Tools**: Ping, wget, curl, netstat
-
-## Installation
-**Note**: You should use the F-Droid or GitHub version of Termux instead of the one on the Google Play Store. The Play Store version is often outdated, buggy, lacks functionality, and has previously been a source of security regressions and even a malicious, hijacked app. In contrast, F-Droid and GitHub versions are actively maintained, more stable, and generally considered safer.
-
-### Watch this tutorial for installation: [Video](https://youtu.be/V1-zzo-tCyI)
-
-#### F-Droid (Recommended)
-```bash
-# Download directly from F-Droid
-https://f-droid.org/en/packages/com.termux/
-```
-- Most stable and up-to-date
-- Regular security updates
-- Community trusted
-
-#### GitHub Releases
-```bash
-# Download latest release
-https://github.com/termux/termux-app/releases
-```
-- Latest features
-- Beta testing builds
-- have experimental features
-
-#### Google Play Store
-```bash
-# For Android 11+ devices
-https://play.google.com/store/apps/details?id=com.termux
-```
-- Limited functionality
-- Missing some features due to Play Store restrictions
-
-**Note**: If you downloading termux from apk then The "unsafe app" warning may come for Termux due
-to Google Play Protect flagging the F-Droid & Github version because it's built for older Android versions and may not have the latest privacy protections,While installing the APK, if unsafe app popup comes then click on read more and click on "Install anyway" to install Termux.
-
-
-## System Requirements
-- **Android Version**: 7.0+ (Android 5-6 limited support)
-- **Architecture**: ARM, AArch64, i686, x86_64
-- **Storage**: At least 300MB free space
-- **RAM**: 1GB+ recommended
-
-### Quick Setup:-
-### First Steps
-
-1. **Update System**
-   ```bash
+### Step 1: Install and Update Termux
+1. Install Termux from F-Droid (recommended) or the official source.
+2. Open Termux and update the package list:
+   ```
    pkg update && pkg upgrade
    ```
-
-2. **Setup Storage Access**
-   ```bash
-   termux-setup-storage
+3. Install essential package:
+   ```
+   pkg install  wget 
    ```
 
-## Essential Commands:-
+### Step 2: Install Java
+We need to install Java first. Below are the supported Java versions for running a Minecraft server in Termux:
 
-### File Management
-```bash
-# Navigation
-pwd                    # Show current directory
-ls                     # List files and directories
-ls -la                 # List with hidden files and details
-cd <directory name>    # Change directory
-cd ..                  # Go back one directory
-cd ~                   # Go to home directory
+```sh
+pkg install openjdk-17
+pkg install openjdk-21
+```
+`Note: if you are you using an  older Android versions then  use openjdk-17 because older versions does not support openjdk-21`
 
-# File Operations
-mkdir <folder name>    # Create directory
-rmdir <folder name>    # Remove empty directory
-rm <file name>         # Delete file
-rm -rf <folder name>   # Delete folder and contents
-cp <source> <dest>     # Copy file
-mv <old> <new>         # Move/rename file
-
-# File Content
-cat <file>             # Display file content
-nano <file>            # Edit file with nano
-vim <file>             # Edit file with vim
-touch <file>           # Create empty file
-grep <pattern> <file>  # Search text in file
+Verify the installation of java:
+```
+java -version
 ```
 
-### System Commands
-```bash
-# System Information
-whoami                 # Current username
-uname -a              # System information
-uptime                # System uptime
-free -h               # Memory usage
-df -h                 # Disk usage
-ps                    # Running processes
-top                   # Process monitor
-history               # Command history
+### Step 3: Download Server
+1. Create a directory for the server:
+   ```
+   mkdir mcserver && cd mcserver
+   ```
+2. Choose Minecraft Version Based on Java Version (IMPORTANT)
 
-# Network
-ping <host>           # Test connectivity
-wget <url>            # Download file
-curl <url>            # HTTP requests
-ifconfig              # Network interfaces
-netstat               # Network connections
+   `Note: The Minecraft server version you can run **depends entirely on the Java version installed**.`
+---
+### Java Version Compatibility
+- **openjdk-17**
+  - Supports Minecraft **1.17 – 1.20.4**
+  - Best choice for **older or low-end phones**
+- **openjdk-21**
+  - Required for Minecraft **1.20.5+**
+  - Needed to run **latest versions like 1.21.11**
+
+> ⚠️ Using the wrong Java version will cause the server to crash or fail to start.
+---
+ 3. Download and Install the Server (PaperMC)
+ ### What is PaperMC?
+- PaperMC is a high-performance Minecraft Java Edition server software. It is more optimized and uses less RAM than the official Mojang server, making it suitable - for running on Android devices using Termux.
+
+### For openjdk-17 users (Minecraft 1.20.4)
+``` 
+wget https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar
 ```
 
-## Package Management
+### For openjdk-21 users (Minecraft 1.21.11)
+```
+wget https://api.papermc.io/v2/projects/paper/versions/1.21.11/builds/1/downloads/paper-1.21.11-1.jar
+```
+### Note
+- If you want to download **other Minecraft versions**, you can visit the **PaperMC version list** on the official PaperMC website and copy the download link for your desired version.
+- If you want to use **other server software** (such as **Vanilla**, **Spigot**, **Fabric**, or **Forge**), you can download their server `.jar` file from their official websites and install it in the same way using `wget` with the provided download link.
+### Rename the Server File (Step by Step)
 
-### PKG Commands (Recommended)
-```bash
-# Update and Upgrade
-pkg update                 # Update package lists
-pkg upgrade                # Upgrade installed packages
-pkg update && pkg upgrade  # Update and upgrade together
+After downloading the PaperMC server file, you should rename it to `server.jar`.  
+This avoids confusion and makes it easier to run the server later.
 
-# Install and Remove
-pkg install <package>      # Install package
-pkg uninstall <package>    # Remove package  
-pkg reinstall <package>    # Reinstall package
-pkg show <package>         # Show package info
-pkg search <query>         # Search packages
+#### Step 1: List the files in the directory
+Use the `ls` command to see the downloaded file name. You will see a file name similar to one of these:
+- `paper-1.20.1-196.jar`
+- `paper-1.21.11-1.jar`
 
-# Package Information
-pkg list-all               # List all available packages
-pkg list-installed         # List installed packages
-pkg files <package>        # Show files installed by package
+#### Step 2: Rename the file using `mv`
+Copy the exact file name shown by `ls`, then use the `mv` command to rename it.
 
-# Cleanup
-pkg clean                  # Clean package cache
-pkg autoclean              # Remove outdated packages
+**Example for Minecraft 1.20.1 (openjdk-17):**
+```
+mv paper-1.20.1-196.jar server.jar
+```
+**Example for Minecraft 1.21.11 (openjdk-21):**
+```
+mv paper-1.21.11-1.jar server.jar
+```
+#### Step 3: Confirm the rename
+Run `ls` again You should now see: ```server.jar``` 
+
+### Step 4: Run the Server for the First Time
+
+After renaming the file to `server.jar`, you need to run the server once.  
+This first run is required to generate important files such as `eula.txt` and the server configuration files.
+
+#### Step 1: Start the server
+Make sure you are inside the server folder, then run:
+
+```
+java -jar server.jar
+```
+`Note:This command will start the server. It take some time and also show some warning but dont worry about that.` 
+#### Step 2: Wait for the server to stop
+During the first run, the server will start briefly and then stop automatically.  
+This is normal and happens because you have not accepted the Minecraft EULA yet.
+#### Step 3: Check generated files
+List the files using ```ls```to confirm they were created. You should now see files like:
+- `eula.txt`
+- `server.properties`
+- `logs` folder
+- `Plugins` folder
+- etc.
+
+The server is now ready for the next step, where you will accept the EULA and configure the server.
+### Step 5: Accept the EULA and Start the Server
+#### Step 1: Open the EULA file
+Use `nano` to edit the EULA file ```nano eula.txt``` 
+#### Step 2: Accept the EULA
+Inside the file, find this line ```eula=false``` Change it to: ```eula=true```Save and exit Nano:
+- Press **Ctrl + X**
+- Press **Y**
+- Press **Enter**
+
+#### Step 3: Start the server normally
+Now start the server with recommended RAM settings for Android devices:
+```
+java -Xms512M -Xmx1024M -jar server.jar nogui
+```
+## It will take  5-10 minutes then you ready to join
+### Step 6: Join the Server (IP and Port)
+
+Once the server is running, players can join using the server’s **IP address** and **port**.
+
+
+#### Step 1: Find your device’s IP address
+In Termux,You need to stop the server ```Ctrl + z``` to stop then run the following command ```ip addr show```. Look for an address that starts with ```inet``` for example ```inet 192.168.1.5``` This is your **local IP address**.
+
+#### Step 2: Understand the default ports
+- **Java Edition port:** `25565`
+
+#### Step 3: Join from Java Edition
+On Minecraft Java Edition:
+1. Open **Multiplayer**
+2. Click **Add Server**
+3. Enter: Server Address::Port Example ```192.168.1.5:25565```
+
+### Step 7: Enable Cross-Play (Java + Bedrock)
+
+At this point, **Java Edition players can already join** the server using the IP and port from Step 6.
+
+To allow **Bedrock Edition (Mobile / Console) players** to join the same server, you must install **plugins**.
+
+
+## What is GeyserMC and Floodgate?
+- **GeyserMC** allows Bedrock Edition players to join a Java Edition server.
+- **Floodgate** allows Bedrock players to join **without needing a Java account**.
+- Both plugins are required for proper cross-play.
+
+
+### Step 1: Stop the Server
+Before installing plugins, stop the server safely.
+
+In the server console, type `stop`. Wait until the server fully shuts down.
+
+### Step 2: Open the plugins folder
+Make sure you are inside your server directory, then run `cd plugins`
+
+### Step 3: Download GeyserMC Plugin (Spigot Version)
+Download the **Geyser Spigot plugin**:
+```
+wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
 ```
 
-### Popular Packages
-```bash
-# Development Tools
-pkg install python git nodejs ruby golang
-pkg install vim nano emacs
-pkg install gcc clang make cmake
-
-# Network Tools
-pkg install openssh curl wget rsync
-pkg install nmap wireshark-cli
-
-# System Utilities
-pkg install htop tree file which
-pkg install tar zip unzip
-
-# Web Development
-pkg install apache2 nginx php mariadb
+### Step 4: Download Floodgate Plugin (Paper Version)
+Download the **Floodgate plugin for Paper**:
+```
+wget https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
 ```
 
-## Tutorial Videos
+### Step 5: Verify Plugin Installation
+List the files `ls` then You should see "Geyser-Spigot.jar & floodgate-paper.jar" These files **must stay inside the `plugins` folder**.
 
-### Comprehensive Guides
 
-1. **[Learn Termux In One Video (49 mins)](https://www.youtube.com/watch?v=PPurMircqsc)**
-   - Complete beginner to advanced guide
-   - Programming, web development, scripting
-   - Covers Python, Java, C/C++, PHP, Node.js
+### Step 6: Start the Server with Limited RAM
+Go back to the main server folder `cd ..` Start the server with recommended RAM limits for Android:
+```
+java -Xms512M -Xmx1024M -jar server.jar nogui
+```
+> ⏳ The first start after installing plugins may take **some extra time**.  
+> Be patient and wait until the server finishes loading.
 
-2. **[Complete Termux Linux Tutorial 2025 (37 mins)](https://www.youtube.com/watch?v=4r5PM2avLqg)**
-   - Installation to advanced usage
-   - Linux commands and Python scripting
-   - HTTP requests and automation
 
-3. **[Termux Linux Commands FULL Tutorial (12 mins)](https://www.youtube.com/watch?v=VvQhT0e_58Q)**
-   - Essential Linux commands
-   - File operations and management
-   - Perfect for beginners
+### Step 7: Wait for Plugins to Load
+When the server starts successfully, you should see messages mentioning:
+- `Geyser`
+- `Floodgate`
 
-4. **[Termux for Beginners | Simplilearn (10 mins)](https://www.youtube.com/watch?v=ulLjGFwFqbs)**
-   - What is Termux and features
-   - Installation and package management
-   - Command cheat sheet
+This confirms that cross-play is enabled.
 
-###  Learning Path
-- Start with basic installation and setup videos
-- Learn essential Linux commands
-- Progress to programming and development
-- Explore advanced topics like automation and networking
+### Step 8: Join the Server 
 
-## Documentation & Resources
+#### Java Edition
+`IP:  Port: 25565`
+#### Bedrock Edition:  
+`Port: 19132`
+Bedrock players can now join the same server as Java players.
 
-### Official Documentation
-- **[Termux Wiki](https://wiki.termux.com)** - Comprehensive documentation
-- **[Termux GitHub](https://github.com/termux/termux-app)** - Source code and issues
-- **[Termux Packages](https://github.com/termux/termux-packages)** - Package repository
-- **[Package Management Guide](https://wiki.termux.com/wiki/Package_Management)** - Detailed package info
-
-### Useful Websites
-- **[EasyMux](https://www.easymux.in/)** - Termux tutorials and downloads
-- **[LearnTermux](https://www.learntermux.tech/)** - Commands and tutorials
-- **[Termux Commands](https://www.termuxcommands.com/)** - Command reference
-
-### Command Cheat Sheets
-- **[Termux Command Cheat Sheet](https://denizhalil.com/2024/01/02/termux-commands-cheat-sheet/)** - Comprehensive command list
-- **[Basic Commands PDF](https://www.learntermux.tech/2020/01/basic-commands-in-termux.html)** - Downloadable reference
-
-## Community
-
-### Get Help & Share
-- **[Reddit r/termux](https://www.reddit.com/r/termux/)** - Active community discussions
-- **[GitHub Issues](https://github.com/termux/termux-app/issues)** - Bug reports and feature requests
-- **[Termux Community Guidelines](https://termux.dev/community)** - Community rules and guidelines
-
-### Contributing
-- Report bugs on GitHub
-- Contribute to documentation
-- Create and share packages
-- Help other users in community forums
-
-## FAQ
-
-### Common Questions
-
-**Q: Does Termux require root access?**
-A: No, Termux works on unrooted devices. However, root access can unlock additional features.
-
-**Q: Can I run GUI applications?**
-A: Yes, using VNC server and desktop environments like XFCE or LXDE.
-
-**Q: Is Termux safe for ethical hacking?**
-A: Yes, but only use for learning and authorized testing. Respect legal boundaries.
-
-**Q: Can I develop mobile apps with Termux?**
-A: Yes, you can develop web apps, React Native apps, and use various development frameworks.
-
-**Q: How much storage does Termux need?**
-A: Base installation is ~180MB, but can grow with packages. 1GB+ recommended for development.
-
-**Q: Can I run Termux on older Android versions?**
-A: Limited support for Android 5-6. Android 7+ recommended for full functionality.
-
-**Made with ❤️ by the Termux Community**
-
-*Happy Terminal Hacking!*
+### Notes
+- Bedrock players may take slightly longer to join the first time
+- Do not close Termux while the server is running
+- Always stop the server using `stop` before closing Termux
+---
